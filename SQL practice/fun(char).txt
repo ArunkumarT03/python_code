@@ -1,0 +1,252 @@
+SQL> select instr('developer','e',1,2) from dual;
+
+INSTR('DEVELOPER','E',1,2)                                                      
+--------------------------                                                      
+                         4                                                      
+
+SQL> 
+SQL> select instr('developer','o',5,1) from dual;
+
+INSTR('DEVELOPER','O',5,1)                                                      
+--------------------------                                                      
+                         6                                                      
+
+SQL> select instr('developer','l',2,1) from dual;
+
+INSTR('DEVELOPER','L',2,1)                                                      
+--------------------------                                                      
+                         5                                                      
+
+SQL> select concat(44,'sql') from dual;
+
+CONCA                                                                           
+-----                                                                           
+44sql                                                                           
+
+SQL> select cocat(55,'sql',56) from dual;
+select cocat(55,'sql',56) from dual
+       *
+ERROR at line 1:
+ORA-00904: "COCAT": invalid identifier 
+
+
+SQL> select concat(55,'sql',56) from dual;
+select concat(55,'sql',56) from dual
+       *
+ERROR at line 1:
+ORA-00909: invalid number of arguments 
+
+
+SQL> select ascii('abc')  from dual;
+
+ASCII('ABC')                                                                    
+------------                                                                    
+          97                                                                    
+
+SQL> select ascii('a','b','c') from dual;
+select ascii('a','b','c') from dual
+       *
+ERROR at line 1:
+ORA-00909: invalid number of arguments 
+
+
+SQL> select ascii('a' and 'b' and 'c')from dual;
+select ascii('a' and 'b' and 'c')from dual
+                 *
+ERROR at line 1:
+ORA-00907: missing right parenthesis 
+
+
+SQL> select ascii('@') from dual;
+
+ASCII('@')                                                                      
+----------                                                                      
+        64                                                                      
+
+SQL> select trim(' hello') from dual;
+
+TRIM(                                                                           
+-----                                                                           
+hello                                                                           
+
+SQL> select trim('h' from 'hello') from dual;
+
+TRIM                                                                            
+----                                                                            
+ello                                                                            
+
+SQL> select trim('hello karthi  ')from dual;
+
+TRIM('HELLOK                                                                    
+------------                                                                    
+hello karthi                                                                    
+
+SQL> select trim('arun' from 'arunkumar') from dual;
+select trim('arun' from 'arunkumar') from dual
+       *
+ERROR at line 1:
+ORA-30001: trim set should have only one character 
+
+
+SQL> select trim('ar' from 'arun') from dual;
+select trim('ar' from 'arun') from dual
+       *
+ERROR at line 1:
+ORA-30001: trim set should have only one character 
+
+
+SQL> select lpad('developer',15,'smith')from dual;
+
+LPAD('DEVELOPER                                                                 
+---------------                                                                 
+smithsdeveloper                                                                 
+
+SQL> select lpad('hello',10,'smith')from dual;
+
+LPAD('HELL                                                                      
+----------                                                                      
+smithhello                                                                      
+
+SQL> select rpad('smith',10,'employee') from dual;
+
+RPAD('SMIT                                                                      
+----------                                                                      
+smithemplo                                                                      
+
+SQL> select rpad('hi',20,'smith') from dual;
+
+RPAD('HI',20,'SMITH'                                                            
+--------------------                                                            
+hismithsmithsmithsmi                                                            
+
+SQL> select rpad('hii',5,'arun') from dual;
+
+RPAD(                                                                           
+-----                                                                           
+hiiar                                                                           
+
+SQL> select lpad('arun',10,'smith') from dual;
+
+LPAD('ARUN                                                                      
+----------                                                                      
+smithsarun                                                                      
+
+SQL> select rpad(developer',10,'arun') from dual;
+ERROR:
+ORA-01756: quoted string not properly terminated 
+
+
+SQL> 
+SQL> select rpad('developer',10,'arun') from dual;
+
+RPAD('DEVE                                                                      
+----------                                                                      
+developera                                                                      
+
+SQL> select translate('technology','hn','nh') from dual;
+
+TRANSLATE(                                                                      
+----------                                                                      
+tecnhology                                                                      
+
+SQL> select translate('developer','ve','ea')from dual;
+
+TRANSLATE                                                                       
+---------                                                                       
+daealopar                                                                       
+
+SQL> select nvl(comm,800) from emp;
+
+NVL(COMM,800)                                                                   
+-------------                                                                   
+          800                                                                   
+          300                                                                   
+          500                                                                   
+          800                                                                   
+         1400                                                                   
+          800                                                                   
+          800                                                                   
+          800                                                                   
+          800                                                                   
+            0                                                                   
+         1700                                                                   
+
+NVL(COMM,800)                                                                   
+-------------                                                                   
+          800                                                                   
+          800                                                                   
+          800                                                                   
+
+14 rows selected.
+
+SQL> select nvl2(comm,700,1000) from emp;
+
+NVL2(COMM,700,1000)                                                             
+-------------------                                                             
+               1000                                                             
+                700                                                             
+                700                                                             
+               1000                                                             
+                700                                                             
+               1000                                                             
+               1000                                                             
+               1000                                                             
+               1000                                                             
+                700                                                             
+                700                                                             
+
+NVL2(COMM,700,1000)                                                             
+-------------------                                                             
+               1000                                                             
+               1000                                                             
+               1000                                                             
+
+14 rows selected.
+
+SQL> select comm,nvl2(comm,700,1000) from dual;
+select comm,nvl2(comm,700,1000) from dual
+                 *
+ERROR at line 1:
+ORA-00904: "COMM": invalid identifier 
+
+
+SQL> select comm,nvl2(comm,700,1000) from dual;
+select comm,nvl2(comm,700,1000) from dual
+                 *
+ERROR at line 1:
+ORA-00904: "COMM": invalid identifier 
+
+
+SQL> select comm,nvl(comm,700) from dual;
+select comm,nvl(comm,700) from dual
+                *
+ERROR at line 1:
+ORA-00904: "COMM": invalid identifier 
+
+
+SQL> 
+SQL> select comm,nvl2(comm,700,1000) from emp;
+
+      COMM NVL2(COMM,700,1000)                                                  
+---------- -------------------                                                  
+                          1000                                                  
+       300                 700                                                  
+       500                 700                                                  
+                          1000                                                  
+      1400                 700                                                  
+                          1000                                                  
+                          1000                                                  
+                          1000                                                  
+                          1000                                                  
+         0                 700                                                  
+      1700                 700                                                  
+
+      COMM NVL2(COMM,700,1000)                                                  
+---------- -------------------                                                  
+                          1000                                                  
+                          1000                                                  
+                          1000                                                  
+
+14 rows selected.
+
+SQL> spool off;

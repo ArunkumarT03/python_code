@@ -1,0 +1,73 @@
+SQL> select mod(33,3) from dual;
+
+ MOD(33,3)                                                                      
+----------                                                                      
+         0                                                                      
+
+SQL> select abs(-15) from dual;
+
+  ABS(-15)                                                                      
+----------                                                                      
+        15                                                                      
+
+SQL> select power(526,2) from dual;
+
+POWER(526,2)                                                                    
+------------                                                                    
+      276676                                                                    
+
+SQL> select sqrt(244) from dual;
+
+ SQRT(244)                                                                      
+----------                                                                      
+15.6204994                                                                      
+
+SQL> select floor(12.2) from dual;
+
+FLOOR(12.2)                                                                     
+-----------                                                                     
+         12                                                                     
+
+SQL> select floor(12.9) from dual;
+
+FLOOR(12.9)                                                                     
+-----------                                                                     
+         12                                                                     
+
+SQL> select ceil(12.3) from dual;
+
+CEIL(12.3)                                                                      
+----------                                                                      
+        13                                                                      
+
+SQL> select ceil(13.6) from dual;
+
+CEIL(13.6)                                                                      
+----------                                                                      
+        14                                                                      
+
+SQL> select round(12.4) from dual;
+
+ROUND(12.4)                                                                     
+-----------                                                                     
+         12                                                                     
+
+SQL> select round(12.9) from dual;
+
+ROUND(12.9)                                                                     
+-----------                                                                     
+         13                                                                     
+
+SQL> select round(13.7) from dual;
+
+ROUND(13.7)                                                                     
+-----------                                                                     
+         14                                                                     
+
+SQL> select round(13.2) from dual;
+
+ROUND(13.2)                                                                     
+-----------                                                                     
+         13                                                                     
+
+SQL> spool off;

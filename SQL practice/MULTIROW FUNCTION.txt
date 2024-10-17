@@ -1,0 +1,115 @@
+SQL> select max(sal) from emp;
+
+  MAX(SAL)                                                                      
+----------                                                                      
+      5000                                                                      
+
+SQL> select * from emp where max(sal)>1;
+select * from emp where max(sal)>1
+                        *
+ERROR at line 1:
+ORA-00934: group function is not allowed here 
+
+
+SQL> select max(sal) from emp where job='SALESMAN';
+
+  MAX(SAL)                                                                      
+----------                                                                      
+      1600                                                                      
+
+SQL> select min(sal) from emp;
+
+  MIN(SAL)                                                                      
+----------                                                                      
+       800                                                                      
+
+SQL> select min(sal) from emp where ename='smith';
+
+  MIN(SAL)                                                                      
+----------                                                                      
+                                                                                
+
+SQL> select ename from emp having  min(sal);
+select ename from emp having  min(sal)
+                                     *
+ERROR at line 1:
+ORA-00920: invalid relational operator 
+
+
+SQL> select sum(sal) from emp;
+
+  SUM(SAL)                                                                      
+----------                                                                      
+     31025                                                                      
+
+SQL> select sum(sal) from emp where job='CLERK';
+
+  SUM(SAL)                                                                      
+----------                                                                      
+      3050                                                                      
+
+SQL> select count(*) from emp where deptno=20>3;
+select count(*) from emp where deptno=20>3
+                                        *
+ERROR at line 1:
+ORA-00933: SQL command not properly ended 
+
+
+SQL> select count(*) from emp where deptno=20 and deptno>3;
+
+  COUNT(*)                                                                      
+----------                                                                      
+         5                                                                      
+
+SQL> select count(*) from emp where deptno=20 and count(deptno=20)>3;
+select count(*) from emp where deptno=20 and count(deptno=20)>3
+                                             *
+ERROR at line 1:
+ORA-00934: group function is not allowed here 
+
+
+SQL> select count(comm) from emp where hiredate='01-JAN-86';
+
+COUNT(COMM)                                                                     
+-----------                                                                     
+          0                                                                     
+
+SQL> select count(comm) from emp where ename='SMITH';
+
+COUNT(COMM)                                                                     
+-----------                                                                     
+          0                                                                     
+
+SQL> select ename from emp where not comm is null;
+
+ENAME                                                                           
+----------                                                                      
+ALLEN                                                                           
+WARD                                                                            
+MARTIN                                                                          
+TURNER                                                                          
+ADAMS                                                                           
+
+SQL> select ename from emp where comm is null;
+
+ENAME                                                                           
+----------                                                                      
+SMITH                                                                           
+JONES                                                                           
+BLAKE                                                                           
+CLARK                                                                           
+SCOTT                                                                           
+KING                                                                            
+JAMES                                                                           
+FORD                                                                            
+MILLER                                                                          
+
+9 rows selected.
+
+SQL> select count(comm) from emp where ename='MARTIN';
+
+COUNT(COMM)                                                                     
+-----------                                                                     
+          1                                                                     
+
+SQL> spool off;

@@ -1,0 +1,60 @@
+SQL> select e.ename,e.empno,e.sal*12,d.dname,d.loc
+  2  
+SQL> select e.ename,e.empno,e.sal*12,d.dname,d.loc
+  2  from emp e innerjoin dept d
+  3  on e.ename='scott' and e.deptno=d.deptno;
+from emp e innerjoin dept d
+           *
+ERROR at line 2:
+ORA-00933: SQL command not properly ended 
+
+
+SQL> select e.ename,e.empno,e.sal*12,d.dname,d.loc
+  2  from emp e inner join dept d
+  3  on e.ename='scott' and e.deptno=d.deptno;
+
+no rows selected
+
+SQL> select e.ename,e.empno,e.sal*12,d.dname,d.loc
+  2  from emp e inner join dept d
+  3   on e.ename='scott' and e.deptno<d.deptno;
+
+no rows selected
+
+SQL> select d.*
+  2  from emp e inner join dept d
+  3  on e.mgr is null and e.sal>3000 and d.loc='NEW YORK' and
+  4  e.deptno=d.deptno;
+
+    DEPTNO DNAME          LOC                                                   
+---------- -------------- -------------                                         
+        10 ACCOUNTING     NEW YORK                                              
+
+SQL> select dept(*) from dept where deptno in
+  2  (select deptno from emp where mgr is null and sal>3000 and loc='NEW YORK');
+select dept(*) from dept where deptno in
+            *
+ERROR at line 1:
+ORA-00936: missing expression 
+
+
+SQL> select dept *  from dept where deptno in
+  2  (select deptno from emp where mgr is null and sal>3000 and loc='NEW YORK');
+select dept *  from dept where deptno in
+               *
+ERROR at line 1:
+ORA-00936: missing expression 
+
+
+SQL> select *  from dept where deptno in(select deptno from emp where mgr is null and sal>3000 and loc='NEW YORK');
+
+    DEPTNO DNAME          LOC                                                   
+---------- -------------- -------------                                         
+        10 ACCOUNTING     NEW YORK                                              
+
+SQL> select * from emp where deptno in
+  2  (select deptno from dept where not mgr is null and sal>=3000 and loc='BOSTON');
+
+no rows selected
+
+SQL> spool  off;

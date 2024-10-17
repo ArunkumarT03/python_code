@@ -1,0 +1,61 @@
+SQL> select * from table;
+select * from table
+                  *
+ERROR at line 1:
+ORA-00906: missing left parenthesis 
+
+
+SQL> select * from table
+  2  
+SQL> select* from TABLE;
+select* from TABLE
+                 *
+ERROR at line 1:
+ORA-00906: missing left parenthesis 
+
+
+SQL> select* from TAB;
+
+TNAME                          TABTYPE  CLUSTERID                               
+------------------------------ ------- ----------                               
+DEPT                           TABLE                                            
+EMP                            TABLE                                            
+BONUS                          TABLE                                            
+SALGRADE                       TABLE                                            
+COURSE                         TABLE                                            
+STUDENT                        TABLE                                            
+
+6 rows selected.
+
+SQL> select * from course;
+
+no rows selected
+
+SQL> desc course;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ CID                                       NOT NULL NUMBER(5)
+ CNAME                                     NOT NULL VARCHAR2(10)
+ FEES                                               NUMBER(5)
+ TNAME                                              VARCHAR2(10)
+
+SQL> alter table course add DURATION number(5);
+
+Table altered.
+
+SQL> alter table course rename column FEES to AMOUNT;
+
+Table altered.
+
+SQL> alter table course drop column DURATION;
+
+Table altered.
+
+SQL> alter table course modify AMOUNT varchar(20);
+alter table course modify AMOUNT varchar(20)
+                          *
+ERROR at line 1:
+ORA-01463: cannot modify column datatype with current constraint(s) 
+
+
+SQL> spool off;

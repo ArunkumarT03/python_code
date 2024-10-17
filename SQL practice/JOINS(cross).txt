@@ -1,0 +1,299 @@
+SQL> select e.ename ,e.hiredate,e.job,d.dname
+  2  from emp e cross join dept d
+  3  
+SQL> select e.ename ,e.hiredate,e.job,d.dname
+  2  from emp e cross join dept d;
+
+ENAME      HIREDATE  JOB       DNAME                                            
+---------- --------- --------- --------------                                   
+SMITH      17-DEC-80 CLERK     ACCOUNTING                                       
+ALLEN      20-FEB-81 SALESMAN  ACCOUNTING                                       
+WARD       22-FEB-81 SALESMAN  ACCOUNTING                                       
+JONES      02-APR-81 MANAGER   ACCOUNTING                                       
+MARTIN     28-SEP-81 SALESMAN  ACCOUNTING                                       
+BLAKE      01-MAY-81 MANAGER   ACCOUNTING                                       
+CLARK      09-JUN-81 MANAGER   ACCOUNTING                                       
+SCOTT      19-APR-87 ANALYST   ACCOUNTING                                       
+KING       17-NOV-81 PRESIDENT ACCOUNTING                                       
+TURNER     08-SEP-81 SALESMAN  ACCOUNTING                                       
+ADAMS      23-MAY-87 TESTING   ACCOUNTING                                       
+
+ENAME      HIREDATE  JOB       DNAME                                            
+---------- --------- --------- --------------                                   
+JAMES      03-DEC-81 CLERK     ACCOUNTING                                       
+FORD       03-DEC-81 ANALYST   ACCOUNTING                                       
+MILLER     23-JAN-82 CLERK     ACCOUNTING                                       
+SMITH      17-DEC-80 CLERK     RESEARCH                                         
+ALLEN      20-FEB-81 SALESMAN  RESEARCH                                         
+WARD       22-FEB-81 SALESMAN  RESEARCH                                         
+JONES      02-APR-81 MANAGER   RESEARCH                                         
+MARTIN     28-SEP-81 SALESMAN  RESEARCH                                         
+BLAKE      01-MAY-81 MANAGER   RESEARCH                                         
+CLARK      09-JUN-81 MANAGER   RESEARCH                                         
+SCOTT      19-APR-87 ANALYST   RESEARCH                                         
+
+ENAME      HIREDATE  JOB       DNAME                                            
+---------- --------- --------- --------------                                   
+KING       17-NOV-81 PRESIDENT RESEARCH                                         
+TURNER     08-SEP-81 SALESMAN  RESEARCH                                         
+ADAMS      23-MAY-87 TESTING   RESEARCH                                         
+JAMES      03-DEC-81 CLERK     RESEARCH                                         
+FORD       03-DEC-81 ANALYST   RESEARCH                                         
+MILLER     23-JAN-82 CLERK     RESEARCH                                         
+SMITH      17-DEC-80 CLERK     SALES                                            
+ALLEN      20-FEB-81 SALESMAN  SALES                                            
+WARD       22-FEB-81 SALESMAN  SALES                                            
+JONES      02-APR-81 MANAGER   SALES                                            
+MARTIN     28-SEP-81 SALESMAN  SALES                                            
+
+ENAME      HIREDATE  JOB       DNAME                                            
+---------- --------- --------- --------------                                   
+BLAKE      01-MAY-81 MANAGER   SALES                                            
+CLARK      09-JUN-81 MANAGER   SALES                                            
+SCOTT      19-APR-87 ANALYST   SALES                                            
+KING       17-NOV-81 PRESIDENT SALES                                            
+TURNER     08-SEP-81 SALESMAN  SALES                                            
+ADAMS      23-MAY-87 TESTING   SALES                                            
+JAMES      03-DEC-81 CLERK     SALES                                            
+FORD       03-DEC-81 ANALYST   SALES                                            
+MILLER     23-JAN-82 CLERK     SALES                                            
+SMITH      17-DEC-80 CLERK     OPERATIONS                                       
+ALLEN      20-FEB-81 SALESMAN  OPERATIONS                                       
+
+ENAME      HIREDATE  JOB       DNAME                                            
+---------- --------- --------- --------------                                   
+WARD       22-FEB-81 SALESMAN  OPERATIONS                                       
+JONES      02-APR-81 MANAGER   OPERATIONS                                       
+MARTIN     28-SEP-81 SALESMAN  OPERATIONS                                       
+BLAKE      01-MAY-81 MANAGER   OPERATIONS                                       
+CLARK      09-JUN-81 MANAGER   OPERATIONS                                       
+SCOTT      19-APR-87 ANALYST   OPERATIONS                                       
+KING       17-NOV-81 PRESIDENT OPERATIONS                                       
+TURNER     08-SEP-81 SALESMAN  OPERATIONS                                       
+ADAMS      23-MAY-87 TESTING   OPERATIONS                                       
+JAMES      03-DEC-81 CLERK     OPERATIONS                                       
+FORD       03-DEC-81 ANALYST   OPERATIONS                                       
+
+ENAME      HIREDATE  JOB       DNAME                                            
+---------- --------- --------- --------------                                   
+MILLER     23-JAN-82 CLERK     OPERATIONS                                       
+
+56 rows selected.
+
+SQL> select e.ename,d.dname
+  2  from emp e,dname d;
+from emp e,dname d
+           *
+ERROR at line 2:
+ORA-00942: table or view does not exist 
+
+
+SQL>  select e.ename,d.dname
+  2  from emp e,dept d;
+
+ENAME      DNAME                                                                
+---------- --------------                                                       
+SMITH      ACCOUNTING                                                           
+ALLEN      ACCOUNTING                                                           
+WARD       ACCOUNTING                                                           
+JONES      ACCOUNTING                                                           
+MARTIN     ACCOUNTING                                                           
+BLAKE      ACCOUNTING                                                           
+CLARK      ACCOUNTING                                                           
+SCOTT      ACCOUNTING                                                           
+KING       ACCOUNTING                                                           
+TURNER     ACCOUNTING                                                           
+ADAMS      ACCOUNTING                                                           
+
+ENAME      DNAME                                                                
+---------- --------------                                                       
+JAMES      ACCOUNTING                                                           
+FORD       ACCOUNTING                                                           
+MILLER     ACCOUNTING                                                           
+SMITH      RESEARCH                                                             
+ALLEN      RESEARCH                                                             
+WARD       RESEARCH                                                             
+JONES      RESEARCH                                                             
+MARTIN     RESEARCH                                                             
+BLAKE      RESEARCH                                                             
+CLARK      RESEARCH                                                             
+SCOTT      RESEARCH                                                             
+
+ENAME      DNAME                                                                
+---------- --------------                                                       
+KING       RESEARCH                                                             
+TURNER     RESEARCH                                                             
+ADAMS      RESEARCH                                                             
+JAMES      RESEARCH                                                             
+FORD       RESEARCH                                                             
+MILLER     RESEARCH                                                             
+SMITH      SALES                                                                
+ALLEN      SALES                                                                
+WARD       SALES                                                                
+JONES      SALES                                                                
+MARTIN     SALES                                                                
+
+ENAME      DNAME                                                                
+---------- --------------                                                       
+BLAKE      SALES                                                                
+CLARK      SALES                                                                
+SCOTT      SALES                                                                
+KING       SALES                                                                
+TURNER     SALES                                                                
+ADAMS      SALES                                                                
+JAMES      SALES                                                                
+FORD       SALES                                                                
+MILLER     SALES                                                                
+SMITH      OPERATIONS                                                           
+ALLEN      OPERATIONS                                                           
+
+ENAME      DNAME                                                                
+---------- --------------                                                       
+WARD       OPERATIONS                                                           
+JONES      OPERATIONS                                                           
+MARTIN     OPERATIONS                                                           
+BLAKE      OPERATIONS                                                           
+CLARK      OPERATIONS                                                           
+SCOTT      OPERATIONS                                                           
+KING       OPERATIONS                                                           
+TURNER     OPERATIONS                                                           
+ADAMS      OPERATIONS                                                           
+JAMES      OPERATIONS                                                           
+FORD       OPERATIONS                                                           
+
+ENAME      DNAME                                                                
+---------- --------------                                                       
+MILLER     OPERATIONS                                                           
+
+56 rows selected.
+
+SQL> select e.empno,e.sal,d.loc
+  2  
+SQL> select e.empno,e.sal,d.loc
+  2  from emp e,dept d
+  3  where e.ename='SMITH';
+
+     EMPNO        SAL LOC                                                       
+---------- ---------- -------------                                             
+      7369        800 NEW YORK                                                  
+      7369        800 DALLAS                                                    
+      7369        800 CHICAGO                                                   
+      7369        800 BOSTON                                                    
+
+SQL> select e.ename,e.sal*,e.hiredate,d.dname
+  2  from emp e,dept d
+  3  where e.comm is null and e.sal>3000;
+select e.ename,e.sal*,e.hiredate,d.dname
+                     *
+ERROR at line 1:
+ORA-00936: missing expression 
+
+
+SQL> select e.ename,e.sal*,e.hiredate,d.dname
+  2  from emp e,dept d
+  3  where e.comm is null and e.sal>3000;
+select e.ename,e.sal*,e.hiredate,d.dname
+                     *
+ERROR at line 1:
+ORA-00936: missing expression 
+
+
+SQL> select e.ename,e.sal*,e.hiredate,d.dname
+  2  from emp e cross join dept d
+  3  where e.comm is null and e.sal>3000;
+select e.ename,e.sal*,e.hiredate,d.dname
+                     *
+ERROR at line 1:
+ORA-00936: missing expression 
+
+
+SQL> select e.ename,e.sal*12,e.hiredate,d.dname
+  2  from emp e cross join dept d
+  3  where e.comm is null and e.sal>3000;
+
+ENAME        E.SAL*12 HIREDATE  DNAME                                           
+---------- ---------- --------- --------------                                  
+SCOTT           60000 19-APR-87 ACCOUNTING                                      
+SCOTT           60000 19-APR-87 RESEARCH                                        
+SCOTT           60000 19-APR-87 SALES                                           
+SCOTT           60000 19-APR-87 OPERATIONS                                      
+KING            60000 17-NOV-81 ACCOUNTING                                      
+KING            60000 17-NOV-81 RESEARCH                                        
+KING            60000 17-NOV-81 SALES                                           
+KING            60000 17-NOV-81 OPERATIONS                                      
+
+8 rows selected.
+
+SQL> select d.*,e.*
+  2  from emp e,dept d
+  3  where e.ename like 'S%';
+
+    DEPTNO DNAME          LOC                EMPNO ENAME      JOB               
+---------- -------------- ------------- ---------- ---------- ---------         
+       MGR HIREDATE         SAL       COMM     DEPTNO                           
+---------- --------- ---------- ---------- ----------                           
+        10 ACCOUNTING     NEW YORK            7369 SMITH      CLERK             
+      7902 17-DEC-80        800                    20                           
+                                                                                
+        20 RESEARCH       DALLAS              7369 SMITH      CLERK             
+      7902 17-DEC-80        800                    20                           
+                                                                                
+        30 SALES          CHICAGO             7369 SMITH      CLERK             
+      7902 17-DEC-80        800                    20                           
+                                                                                
+
+    DEPTNO DNAME          LOC                EMPNO ENAME      JOB               
+---------- -------------- ------------- ---------- ---------- ---------         
+       MGR HIREDATE         SAL       COMM     DEPTNO                           
+---------- --------- ---------- ---------- ----------                           
+        40 OPERATIONS     BOSTON              7369 SMITH      CLERK             
+      7902 17-DEC-80        800                    20                           
+                                                                                
+        10 ACCOUNTING     NEW YORK            7788 SCOTT      ANALYST           
+      7566 19-APR-87       5000                    20                           
+                                                                                
+        20 RESEARCH       DALLAS              7788 SCOTT      ANALYST           
+      7566 19-APR-87       5000                    20                           
+                                                                                
+
+    DEPTNO DNAME          LOC                EMPNO ENAME      JOB               
+---------- -------------- ------------- ---------- ---------- ---------         
+       MGR HIREDATE         SAL       COMM     DEPTNO                           
+---------- --------- ---------- ---------- ----------                           
+        30 SALES          CHICAGO             7788 SCOTT      ANALYST           
+      7566 19-APR-87       5000                    20                           
+                                                                                
+        40 OPERATIONS     BOSTON              7788 SCOTT      ANALYST           
+      7566 19-APR-87       5000                    20                           
+                                                                                
+
+8 rows selected.
+
+SQL> select e.ename,e.empno,d.deptno,d.dname,d.loc
+  2  from emp e,dept d
+  3  where substr(e.ename,1,3) and to_char(hiredate,'mon')='FEB';
+where substr(e.ename,1,3) and to_char(hiredate,'mon')='FEB'
+                          *
+ERROR at line 3:
+ORA-00920: invalid relational operator 
+
+
+SQL> select e.ename,e.empno,d.deptno,d.dname,d.loc
+  2  from emp e,dept d
+  3  where substr(e.ename,1,3) and to_char(e.hiredate,'MON')='FEB';
+where substr(e.ename,1,3) and to_char(e.hiredate,'MON')='FEB'
+                          *
+ERROR at line 3:
+ORA-00920: invalid relational operator 
+
+
+SQL> select e.ename,e.empno,d.deptno,d.dname,d.loc
+  2  from emp e,dept d
+  3  where substr(e.ename,1,3) and to_char(e.hiredate,'MON')='FEB';
+where substr(e.ename,1,3) and to_char(e.hiredate,'MON')='FEB'
+                          *
+ERROR at line 3:
+ORA-00920: invalid relational operator 
+
+
+SQL> spool off;

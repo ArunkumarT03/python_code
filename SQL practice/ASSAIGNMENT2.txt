@@ -1,0 +1,346 @@
+SQL> select * from emp where substr(ename,1) in('A','E',I','O','U');
+ERROR:
+ORA-01756: quoted string not properly terminated 
+
+
+SQL> select * from emp where substr(ename,1) in('A','E','I','O','U');
+
+no rows selected
+
+SQL> select * from emp where substr(ename,1) and in('A','E','I','O','U');
+select * from emp where substr(ename,1) and in('A','E','I','O','U')
+                                        *
+ERROR at line 1:
+ORA-00920: invalid relational operator 
+
+
+SQL> select * from emp where substr(ename,1) in('A','E','I',
+  2  
+SQL> 
+SQL> select ename from emp where substr(ename,-1,-3) and deptno =
+  2  (select deptno from emp where substr(job,1,5) and substr(sal*12,-1)=0);
+select ename from emp where substr(ename,-1,-3) and deptno =
+                                                *
+ERROR at line 1:
+ORA-00920: invalid relational operator 
+
+
+SQL>  select ename from emp where substr(ename,-1,-3) deptno=
+  2  (select deptno from emp where substr(job,1,5) and substr(sal*12,-1)=0);
+ select ename from emp where substr(ename,-1,-3) deptno=
+                                                 *
+ERROR at line 1:
+ORA-00920: invalid relational operator 
+
+
+SQL> cl scr
+SQL> select substr(ename,-1,-3) from emp where deptno =
+  2  (select deptno from emp where substr(job,1,5) and substr(sal*12,-1)=0);
+(select deptno from emp where substr(job,1,5) and substr(sal*12,-1)=0)
+                                              *
+ERROR at line 2:
+ORA-00920: invalid relational operator 
+
+
+SQL> cl scr
+SQL> select * from emp where substr(ename,1) in('A','E','I','O','U');
+
+no rows selected
+
+SQL> select substr(ename,-3) from emp
+  2  where len(job)=5 and substr(sal*12,-1)=0;
+where len(job)=5 and substr(sal*12,-1)=0
+      *
+ERROR at line 2:
+ORA-00904: "LEN": invalid identifier 
+
+
+SQL>  select substr(ename,-3) from emp
+  2  where length(job)='5' and substr(sal*12,-1)=0;
+
+SUB                                                                             
+---                                                                             
+ITH                                                                             
+MES                                                                             
+LER                                                                             
+
+SQL> select * from emp
+  2  where substr(ename,-3) and  length(job)='5' and
+  3   substr(sal*12,-1)=0;
+where substr(ename,-3) and  length(job)='5' and
+                       *
+ERROR at line 2:
+ORA-00920: invalid relational operator 
+
+
+SQL> select lower(substr(ename,1,len(ename/2)) from emp;
+select lower(substr(ename,1,len(ename/2)) from emp
+                                          *
+ERROR at line 1:
+ORA-00907: missing right parenthesis 
+
+
+SQL> select lower(substr(ename,1,len(ename)/2)) from emp;
+select lower(substr(ename,1,len(ename)/2)) from emp
+                            *
+ERROR at line 1:
+ORA-00904: "LEN": invalid identifier 
+
+
+SQL> cl scr
+SQL> select  substr(ename,-3) from emp
+  2  where len(job)='5' and substr(sal*12,-1)=0;
+where len(job)='5' and substr(sal*12,-1)=0
+      *
+ERROR at line 2:
+ORA-00904: "LEN": invalid identifier 
+
+
+SQL> 
+SQL>  select  substr(ename,-3) from emp
+  2   where length(job)='5' and substr(sal*12,-1)=0;
+
+SUB                                                                             
+---                                                                             
+ITH                                                                             
+MES                                                                             
+LER                                                                             
+
+SQL> select * from emp
+  2  where substr(ename,1,1) in('A','E','I','O','U');
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM      
+---------- ---------- --------- ---------- --------- ---------- ----------      
+    DEPTNO                                                                      
+----------                                                                      
+      7499 ALLEN      SALESMAN        7698 20-FEB-81       1600        300      
+        30                                                                      
+                                                                                
+      7876 ADAMS      TESTING         8899 23-MAY-87       1100       1700      
+        20                                                                      
+                                                                                
+
+SQL> select lower(substr(length(ename)/2)) from emp;
+select lower(substr(length(ename)/2)) from emp
+             *
+ERROR at line 1:
+ORA-00938: not enough arguments for function 
+
+
+SQL> select lower(substr(ename,1,length(ename)/2)) from emp;
+
+LOWER(SUBS                                                                      
+----------                                                                      
+sm                                                                              
+al                                                                              
+wa                                                                              
+jo                                                                              
+mar                                                                             
+bl                                                                              
+cl                                                                              
+sc                                                                              
+ki                                                                              
+tur                                                                             
+ad                                                                              
+
+LOWER(SUBS                                                                      
+----------                                                                      
+ja                                                                              
+fo                                                                              
+mil                                                                             
+
+14 rows selected.
+
+SQL> select upper(substr(ename,length(ename)/2+1)) from  emp;
+
+UPPER(SUBS                                                                      
+----------                                                                      
+ITH                                                                             
+LEN                                                                             
+RD                                                                              
+NES                                                                             
+TIN                                                                             
+AKE                                                                             
+ARK                                                                             
+OTT                                                                             
+NG                                                                              
+NER                                                                             
+AMS                                                                             
+
+UPPER(SUBS                                                                      
+----------                                                                      
+MES                                                                             
+RD                                                                              
+LER                                                                             
+
+14 rows selected.
+
+SQL> select upper(substr(ename,length(ename)/2+1)) from emp
+  2  where sal>1500;
+
+UPPER(SUBS                                                                      
+----------                                                                      
+LEN                                                                             
+NES                                                                             
+AKE                                                                             
+ARK                                                                             
+OTT                                                                             
+NG                                                                              
+RD                                                                              
+
+7 rows selected.
+
+SQL> select * from emp where instr(ename,'A');
+select * from emp where instr(ename,'A')
+                                       *
+ERROR at line 1:
+ORA-00920: invalid relational operator 
+
+
+SQL> select * from emp where instr(ename,'A')>0;
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM      
+---------- ---------- --------- ---------- --------- ---------- ----------      
+    DEPTNO                                                                      
+----------                                                                      
+      7499 ALLEN      SALESMAN        7698 20-FEB-81       1600        300      
+        30                                                                      
+                                                                                
+      7521 WARD       SALESMAN        7698 22-FEB-81       1250        500      
+        30                                                                      
+                                                                                
+      7654 MARTIN     SALESMAN        7698 28-SEP-81       1250       1400      
+        30                                                                      
+                                                                                
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM      
+---------- ---------- --------- ---------- --------- ---------- ----------      
+    DEPTNO                                                                      
+----------                                                                      
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                 
+        30                                                                      
+                                                                                
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                 
+        10                                                                      
+                                                                                
+      7876 ADAMS      TESTING         8899 23-MAY-87       1100       1700      
+        20                                                                      
+                                                                                
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM      
+---------- ---------- --------- ---------- --------- ---------- ----------      
+    DEPTNO                                                                      
+----------                                                                      
+      7900 JAMES      CLERK           7698 03-DEC-81        950                 
+        30                                                                      
+                                                                                
+
+7 rows selected.
+
+SQL> select months_between(current_date,hiredate)/12 from emp;
+
+MONTHS_BETWEEN(CURRENT_DATE,HIREDATE)/12                                        
+----------------------------------------                                        
+                              43.3562344                                        
+                              43.1815032                                        
+                              43.1761269                                        
+                              43.0632237                                        
+                              42.5766645                                        
+                              42.9825785                                        
+                              42.8777398                                        
+                              37.0175247                                        
+                              42.4395677                                        
+                               42.630428                                        
+                              36.9234387                                        
+
+MONTHS_BETWEEN(CURRENT_DATE,HIREDATE)/12                                        
+----------------------------------------                                        
+                              42.3938688                                        
+                              42.3938688                                        
+                               42.256772                                        
+
+14 rows selected.
+
+SQL> select concat(substr('developer',1,7)'MENT') from  dual;
+select concat(substr('developer',1,7)'MENT') from  dual
+       *
+ERROR at line 1:
+ORA-00909: invalid number of arguments 
+
+
+SQL>  select concat(substr('developer',1,7),'MENT') from dual;
+
+CONCAT(SUBS                                                                     
+-----------                                                                     
+developMENT                                                                     
+
+SQL> select count(*) from emp where to_char(hiredate,'MON')='FEB'
+  2  and to_char(hiredate,'DAY')='THURSDAY';
+
+  COUNT(*)                                                                      
+----------                                                                      
+         0                                                                      
+
+SQL> select concat(lower(substr(ename,1,3)) and upper(substr(ename,4))) from emp;
+select concat(lower(substr(ename,1,3)) and upper(substr(ename,4))) from emp
+       *
+ERROR at line 1:
+ORA-00909: invalid number of arguments 
+
+
+SQL>  select concat(lower(substr(ename,1,3)),upper(substr(ename,4))) from emp;
+
+CONCAT(LOW                                                                      
+----------                                                                      
+smiTH                                                                           
+allEN                                                                           
+warD                                                                            
+jonES                                                                           
+marTIN                                                                          
+blaKE                                                                           
+claRK                                                                           
+scoTT                                                                           
+kinG                                                                            
+turNER                                                                          
+adaMS                                                                           
+
+CONCAT(LOW                                                                      
+----------                                                                      
+jamES                                                                           
+forD                                                                            
+milLER                                                                          
+
+14 rows selected.
+
+SQL> select concat(ename,sal) empdetails as from emp;
+select concat(ename,sal) empdetails as from emp
+                                    *
+ERROR at line 1:
+ORA-00923: FROM keyword not found where expected 
+
+
+SQL> select concat(ename,sal) empdetails from emp;
+
+EMPDETAILS                                                                      
+--------------------------------------------------                              
+SMITH800                                                                        
+ALLEN1600                                                                       
+WARD1250                                                                        
+JONES2975                                                                       
+MARTIN1250                                                                      
+BLAKE2850                                                                       
+CLARK2450                                                                       
+SCOTT5000                                                                       
+KING5000                                                                        
+TURNER1500                                                                      
+ADAMS1100                                                                       
+
+EMPDETAILS                                                                      
+--------------------------------------------------                              
+JAMES950                                                                        
+FORD3000                                                                        
+MILLER1300                                                                      
+
+14 rows selected.
+
+SQL> spool off;

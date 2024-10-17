@@ -1,0 +1,143 @@
+SQL> select * from emp where (job='MANAGER' and job='SALESMAN')and(sal between 1500 and 2900);
+
+no rows selected
+
+SQL> select* from emp where job='MANAGER' and job='SALESMAN' or sal between 1500 and 2900;
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM      
+---------- ---------- --------- ---------- --------- ---------- ----------      
+    DEPTNO                                                                      
+----------                                                                      
+      7499 ALLEN      SALESMAN        7698 20-FEB-81       1600        300      
+        30                                                                      
+                                                                                
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                 
+        30                                                                      
+                                                                                
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                 
+        10                                                                      
+                                                                                
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM      
+---------- ---------- --------- ---------- --------- ---------- ----------      
+    DEPTNO                                                                      
+----------                                                                      
+      7844 TURNER     SALESMAN        7698 08-SEP-81       1500          0      
+        30                                                                      
+                                                                                
+
+SQL> select* from emp where  job='MANAGER' and job='SALESMAN' and not job='CLERK' or sal between 1500 and 2900;
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM      
+---------- ---------- --------- ---------- --------- ---------- ----------      
+    DEPTNO                                                                      
+----------                                                                      
+      7499 ALLEN      SALESMAN        7698 20-FEB-81       1600        300      
+        30                                                                      
+                                                                                
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                 
+        30                                                                      
+                                                                                
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                 
+        10                                                                      
+                                                                                
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM      
+---------- ---------- --------- ---------- --------- ---------- ----------      
+    DEPTNO                                                                      
+----------                                                                      
+      7844 TURNER     SALESMAN        7698 08-SEP-81       1500          0      
+        30                                                                      
+                                                                                
+
+SQL> select * from emp where ename like 'A%' and ename like 'E%' and ename like 'I%' and
+  2  ename like 'O%' and ename like 'u%';
+
+no rows selected
+
+SQL> select ename from empwhere ename like 'A%' and ename like 'E%' and ename like 'I%' and
+  2   ename like 'O%' and ename like 'U%';
+select ename from empwhere ename like 'A%' and ename like 'E%' and ename like 'I%' and
+                                 *
+ERROR at line 1:
+ORA-00933: SQL command not properly ended 
+
+
+SQL> select ename from emp where ename like 'A%' and ename like 'E%' and ename like 'I%' and
+  2  ename like 'O%' and ename like 'U%';
+
+no rows selected
+
+SQL> select ename from emp where ename like 'A%' or ename like 'E%' orename like 'I%'or
+  2   ename like 'O%' or ename like 'U%';
+select ename from emp where ename like 'A%' or ename like 'E%' orename like 'I%'or
+                                                               *
+ERROR at line 1:
+ORA-00933: SQL command not properly ended 
+
+
+SQL> 
+SQL>  select ename from emp where ename like 'A%' or ename like 'E%' orename like 'I%'or
+  2  ename like 'O%' or ename like 'U%';
+ select ename from emp where ename like 'A%' or ename like 'E%' orename like 'I%'or
+                                                                *
+ERROR at line 1:
+ORA-00933: SQL command not properly ended 
+
+
+SQL> select ename from emp where ename like 'A%' or ename like 'E%' or ename like 'I%'or
+  2  ename like 'O%' or ename like 'U%';
+
+ENAME                                                                           
+----------                                                                      
+ALLEN                                                                           
+ADAMS                                                                           
+
+SQL> select empno,ename,job,hiredate from emp where hiredate>'31-DEC-81' and hiredate<'31-DEC-81';
+
+no rows selected
+
+SQL>  select empno,ename,job,hiredate from emp where hiredate>'01-JAN-81';
+
+     EMPNO ENAME      JOB       HIREDATE                                        
+---------- ---------- --------- ---------                                       
+      7499 ALLEN      SALESMAN  20-FEB-81                                       
+      7521 WARD       SALESMAN  22-FEB-81                                       
+      7566 JONES      MANAGER   02-APR-81                                       
+      7654 MARTIN     SALESMAN  28-SEP-81                                       
+      7698 BLAKE      MANAGER   01-MAY-81                                       
+      7782 CLARK      MANAGER   09-JUN-81                                       
+      7788 SCOTT      ANALYST   19-APR-87                                       
+      7839 KING       PRESIDENT 17-NOV-81                                       
+      7844 TURNER     SALESMAN  08-SEP-81                                       
+      7876 ADAMS      TESTING   23-MAY-87                                       
+      7900 JAMES      CLERK     03-DEC-81                                       
+
+     EMPNO ENAME      JOB       HIREDATE                                        
+---------- ---------- --------- ---------                                       
+      7902 FORD       ANALYST   03-DEC-81                                       
+      7934 MILLER     CLERK     23-JAN-82                                       
+
+13 rows selected.
+
+SQL> select empno,ename,job,hiredate from emp where hiredate>'01-JAN-81'and hiredate <'31-JAN-81';
+
+no rows selected
+
+SQL> select ename,sal from emp where mod(sal,2)!=0;
+
+ENAME             SAL                                                           
+---------- ----------                                                           
+JONES            2975                                                           
+
+SQL> select * from emp where mgr is null;
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM      
+---------- ---------- --------- ---------- --------- ---------- ----------      
+    DEPTNO                                                                      
+----------                                                                      
+      7839 KING       PRESIDENT            17-NOV-81       5000                 
+        10                                                                      
+                                                                                
+
+SQL> spool off;

@@ -1,0 +1,107 @@
+SQL> select length('developer') from dual;
+
+LENGTH('DEVELOPER')                                                             
+-------------------                                                             
+                  9                                                             
+
+SQL> select length('develop ment') from dual;
+
+LENGTH('DEVELOPMENT')                                                           
+---------------------                                                           
+                   12                                                           
+
+SQL> select upper('technology') from dual;
+
+UPPER('TEC                                                                      
+----------                                                                      
+TECHNOLOGY                                                                      
+
+SQL> select lower('TECHNOLOGY') from dual;
+
+LOWER('TEC                                                                      
+----------                                                                      
+technology                                                                      
+
+SQL> select length(upper('development')) from dual;
+
+LENGTH(UPPER('DEVELOPMENT'))                                                    
+----------------------------                                                    
+                          11                                                    
+
+SQL> select initcap('technology') from dual;
+
+INITCAP('T                                                                      
+----------                                                                      
+Technology                                                                      
+
+SQL> select replace('maintance','ance','ain') from dual;
+
+REPLACE(                                                                        
+--------                                                                        
+maintain                                                                        
+
+SQL> select replace('development','develop','environ');
+select replace('development','develop','environ')
+                                                *
+ERROR at line 1:
+ORA-00923: FROM keyword not found where expected 
+
+
+SQL> select replace('development','develop','environ') from dual;
+
+REPLACE('DE                                                                     
+-----------                                                                     
+environment                                                                     
+
+SQL> select substr('english easy to learn',9,21);
+select substr('english easy to learn',9,21)
+                                          *
+ERROR at line 1:
+ORA-00923: FROM keyword not found where expected 
+
+
+SQL> select substr('english easy to learn',9,21) from dual;
+
+SUBSTR('ENGLI                                                                   
+-------------                                                                   
+easy to learn                                                                   
+
+SQL> select length(substr('all is well',5,11)) from dual;
+
+LENGTH(SUBSTR('ALLISWELL',5,11))                                                
+--------------------------------                                                
+                               7                                                
+
+SQL> select substr('all is well',5,11)) from dual;
+select substr('all is well',5,11)) from dual
+                                 *
+ERROR at line 1:
+ORA-00923: FROM keyword not found where expected 
+
+
+SQL> select substr('all is well',5,11) from dual;
+
+SUBSTR(                                                                         
+-------                                                                         
+is well                                                                         
+
+SQL> select reverse('hello')from dual;
+
+REVER                                                                           
+-----                                                                           
+olleh                                                                           
+
+SQL> select reverse('amma')fromdual;
+select reverse('amma')fromdual
+                             *
+ERROR at line 1:
+ORA-00923: FROM keyword not found where expected 
+
+
+SQL> select reverse('amma')from dual;
+
+REVE                                                                            
+----                                                                            
+amma                                                                            
+
+SQL> spool off;

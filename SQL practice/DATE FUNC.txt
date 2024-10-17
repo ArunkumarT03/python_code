@@ -1,0 +1,64 @@
+SQL> select current_date from dual;
+
+CURRENT_D                                                                       
+---------                                                                       
+18-APR-24                                                                       
+
+SQL> select sysdate from dual;
+
+SYSDATE                                                                         
+---------                                                                       
+18-APR-24                                                                       
+
+SQL> select sessiontimezone from dual;
+
+SESSIONTIMEZONE                                                                 
+---------------------------------------------------------------------------     
++05:30                                                                          
+
+SQL> select add_months('18-JAN-23',7) from dual;
+
+ADD_MONTH                                                                       
+---------                                                                       
+18-AUG-23                                                                       
+
+SQL> select add_months('18-JAN-23',-7) from dual;
+
+ADD_MONTH                                                                       
+---------                                                                       
+18-JUN-22                                                                       
+
+SQL> select monthsbetween('17-JAN-24','18-FEB-24')FROM DUAL;
+select monthsbetween('17-JAN-24','18-FEB-24')FROM DUAL
+       *
+ERROR at line 1:
+ORA-00904: "MONTHSBETWEEN": invalid identifier 
+
+
+SQL> select months_between('17-JAN-24','18-FEB-24')FROM DUAL;
+
+MONTHS_BETWEEN('17-JAN-24','18-FEB-24')                                         
+---------------------------------------                                         
+                             -1.0322581                                         
+
+SQL> selct  session_timezone from dual;
+SP2-0734: unknown command beginning "selct  ses..." - rest of line ignored.
+SQL> select months_between('17-JAN-24','18-JAN-23') from dual;
+
+MONTHS_BETWEEN('17-JAN-24','18-JAN-23')                                         
+---------------------------------------                                         
+                             11.9677419                                         
+
+SQL> select last_day('18-APR-24') from dual;
+
+LAST_DAY(                                                                       
+---------                                                                       
+30-APR-24                                                                       
+
+SQL> select next_day('18-APR-23','THURSDAY') from dual;
+
+NEXT_DAY(                                                                       
+---------                                                                       
+20-APR-23                                                                       
+
+SQL> spool off;

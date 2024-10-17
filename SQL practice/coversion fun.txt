@@ -1,0 +1,163 @@
+SQL> select to_date('29-2003-10','dd-yyyy-mm');
+select to_date('29-2003-10','dd-yyyy-mm')
+                                        *
+ERROR at line 1:
+ORA-00923: FROM keyword not found where expected 
+
+
+SQL> select to_date('29-2003-10','dd-yyyy-mm') from dual;
+
+TO_DATE('                                                                       
+---------                                                                       
+29-OCT-03                                                                       
+
+SQL> select to_date('24-05-2003','dd-mon-yyyy') from dual;
+select to_date('24-05-2003','dd-mon-yyyy') from dual
+               *
+ERROR at line 1:
+ORA-01843: not a valid month 
+
+
+SQL> select to_date('24-05-2003','dd-mm-yyyy')from dual;
+
+TO_DATE('                                                                       
+---------                                                                       
+24-MAY-03                                                                       
+
+SQL> select to_char('24-05-2003','mon-dd-yyyy')from dual;
+select to_char('24-05-2003','mon-dd-yyyy')from dual
+               *
+ERROR at line 1:
+ORA-01722: invalid number 
+
+
+SQL> select to_char(sysdate,'mon-yyyy-dd') from dual;
+
+TO_CHAR(SYS                                                                     
+-----------                                                                     
+apr-2024-19                                                                     
+
+SQL> select to_char(current_date,'mm-yyyy-dd') from dual;
+
+TO_CHAR(CU                                                                      
+----------                                                                      
+04-2024-19                                                                      
+
+SQL> select *from emp where to_char(current_date,'day')='2024';
+
+no rows selected
+
+SQL>  select to_char(current_date,'day')='2024' from dual;
+ select to_char(current_date,'day')='2024' from dual
+                                   *
+ERROR at line 1:
+ORA-00923: FROM keyword not found where expected 
+
+
+SQL>  select to_char(current_date,'day') from dual
+  2  
+SQL>  select to_char(current_date,'day') from dual;
+
+TO_CHAR(C                                                                       
+---------                                                                       
+friday                                                                          
+
+SQL> select *from emp where to_char(hiredate,'dd-mm-yy')='FEB';
+
+no rows selected
+
+SQL> select hiredate from emp;
+
+HIREDATE                                                                        
+---------                                                                       
+17-DEC-80                                                                       
+20-FEB-81                                                                       
+22-FEB-81                                                                       
+02-APR-81                                                                       
+28-SEP-81                                                                       
+01-MAY-81                                                                       
+09-JUN-81                                                                       
+19-APR-87                                                                       
+17-NOV-81                                                                       
+08-SEP-81                                                                       
+23-MAY-87                                                                       
+
+HIREDATE                                                                        
+---------                                                                       
+03-DEC-81                                                                       
+03-DEC-81                                                                       
+23-JAN-82                                                                       
+
+14 rows selected.
+
+SQL>  select *from emp where to_char(hiredate,'mon')='DEC';
+
+no rows selected
+
+SQL> select* from emp where to_char(hiredate,'mon')
+  2  
+SQL> select to_char(hiredate,'mon')='feb' from emp;
+select to_char(hiredate,'mon')='feb' from emp
+                              *
+ERROR at line 1:
+ORA-00923: FROM keyword not found where expected 
+
+
+SQL> select *from emp where to_char(hiredate,'mon')='DEC';
+
+no rows selected
+
+SQL> select *from emp where to_char('HIREDATE','MON')='DEC';
+select *from emp where to_char('HIREDATE','MON')='DEC'
+                               *
+ERROR at line 1:
+ORA-01722: invalid number 
+
+
+SQL> select *from emp where to_char(hiredate,'MON')='DEC';
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM      
+---------- ---------- --------- ---------- --------- ---------- ----------      
+    DEPTNO                                                                      
+----------                                                                      
+      7369 SMITH      CLERK           7902 17-DEC-80        800                 
+        20                                                                      
+                                                                                
+      7900 JAMES      CLERK           7698 03-DEC-81        950                 
+        30                                                                      
+                                                                                
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                 
+        20                                                                      
+                                                                                
+
+SQL> select* from  emp where to_char(hiredate,'DAY')='WEDNESDAY';
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM      
+---------- ---------- --------- ---------- --------- ---------- ----------      
+    DEPTNO                                                                      
+----------                                                                      
+      7369 SMITH      CLERK           7902 17-DEC-80        800                 
+        20                                                                      
+                                                                                
+
+SQL> select to_char(date '2003-05-24','day') from dual;
+
+TO_CHAR(D                                                                       
+---------                                                                       
+saturday                                                                        
+
+SQL> select to_char(date,'2003-MAY-24','day') from dual;
+select to_char(date,'2003-MAY-24','day') from dual
+               *
+ERROR at line 1:
+ORA-00936: missing expression 
+
+
+SQL>  select to_char(date'2003-MAY-24','day') from dual;
+ select to_char(date'2003-MAY-24','day') from dual
+                    *
+ERROR at line 1:
+ORA-01843: not a valid month 
+
+
+SQL> spool off;

@@ -1,0 +1,56 @@
+SQL> SET PAGESIZE 20
+SQL> SET LINESIZE 90
+SQL> create table(CID NUMBER(5) PRIMARYKEY,
+  2  CNAME VARCHAR(10) NOTNULL,
+  3  
+SQL>  create table course(CID NUMBER(5) PRIMARYKEY,
+  2  CNAME VARCHAR(10) NOTNULL,
+  3  FEES NUMBER(5) CHECK(FEES<20000),
+  4  TNAME VARCHAR(10) UNIQUE;
+ create table course(CID NUMBER(5) PRIMARYKEY,
+                                   *
+ERROR at line 1:
+ORA-00907: missing right parenthesis 
+
+
+SQL> create table course(CID NUMBER(5) PRIMARY KEY,
+  2  CNAME VARCHAR(10) NOTNULL,
+  3  FEES NUMBER(5) CHECK(FEES<20000),
+  4  TNAME VARCHAR(10) UNIQUE;
+CNAME VARCHAR(10) NOTNULL,
+                  *
+ERROR at line 2:
+ORA-00907: missing right parenthesis 
+
+
+SQL>  create table course(CID NUMBER(5) PRIMARY KEY,
+  2  CNAME VARCHAR(10) NOT NULL,
+  3  FEES NUMBER(5) CHECK(FEES<20000),
+  4   TNAME VARCHAR(10) UNIQUE);
+
+Table created.
+
+SQL> create table student(SID NUMBER(7) PRIMARY KEY,
+  2  SNAME VARCHAR(10) NOT NULL,
+  3  AGE NUMBER(2) CHECK(AGE>21),
+  4  GENDER VARCHAR(5) DEFAULT('MALE'),
+  5  CNAME VARCHAR(10) NOT NULL,
+  6  CNO NUMBER(10),
+  7  CID REFERNCES COURSE (CID));
+CID REFERNCES COURSE (CID))
+              *
+ERROR at line 7:
+ORA-00907: missing right parenthesis 
+
+
+SQL> create table student(SID NUMBER(7) PRIMARY KEY,
+  2  SNAME VARCHAR(10) NOT NULL,
+  3  AGE NUMBER(2) CHECK(AGE>21),
+  4  GENDER VARCHAR(5) DEFAULT('MALE'),
+  5  CNAME VARCHAR(10) NOT NULL,
+  6   CNO NUMBER(10),
+  7  CID REFERENCES COURSE(CID));
+
+Table created.
+
+SQL> spool off;

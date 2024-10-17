@@ -1,0 +1,131 @@
+SQL> select * from emp where sal=(select sal from emp where ename='MARTIN');
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM      
+---------- ---------- --------- ---------- --------- ---------- ----------      
+    DEPTNO                                                                      
+----------                                                                      
+      7521 WARD       SALESMAN        7698 22-FEB-81       1250        500      
+        30                                                                      
+                                                                                
+      7654 MARTIN     SALESMAN        7698 28-SEP-81       1250       1400      
+        30                                                                      
+                                                                                
+
+SQL> select e1.*
+  2  from emp e1,emp e2
+  3  where ename='MARTIN'
+  4  AND e1.sal=e2.sal;
+where ename='MARTIN'
+      *
+ERROR at line 3:
+ORA-00918: column ambiguously defined 
+
+
+SQL> 
+SQL> select e1.*
+  2  from emp e1,emp e2
+  3  where e2.ename='MARTIN' and
+  4  e1.sal=e2.sal;
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM      
+---------- ---------- --------- ---------- --------- ---------- ----------      
+    DEPTNO                                                                      
+----------                                                                      
+      7521 WARD       SALESMAN        7698 22-FEB-81       1250        500      
+        30                                                                      
+                                                                                
+      7654 MARTIN     SALESMAN        7698 28-SEP-81       1250       1400      
+        30                                                                      
+                                                                                
+
+SQL> select e1.ename
+  2  from emp e1,emp e2
+  3  where e2.ename='JONES'
+  4  and e1.job=e2.job;
+
+ENAME                                                                           
+----------                                                                      
+JONES                                                                           
+BLAKE                                                                           
+CLARK                                                                           
+
+SQL> select e2.ename
+  2   from emp e1,emp e2
+  3   where e1.ename='JONES' and
+  4  e1.job=e2.job;
+
+ENAME                                                                           
+----------                                                                      
+JONES                                                                           
+BLAKE                                                                           
+CLARK                                                                           
+
+SQL> select e1.ename,e1.sal,e2.ename,e2.sal
+  2  from emp e1,emp e2
+  3  where e1.mgr=e2.empno;
+
+ENAME             SAL ENAME             SAL                                     
+---------- ---------- ---------- ----------                                     
+SMITH             800 FORD             3000                                     
+ALLEN            1600 BLAKE            2850                                     
+WARD             1250 BLAKE            2850                                     
+JONES            2975 KING             5000                                     
+MARTIN           1250 BLAKE            2850                                     
+BLAKE            2850 KING             5000                                     
+CLARK            2450 KING             5000                                     
+SCOTT            5000 JONES            2975                                     
+TURNER           1500 BLAKE            2850                                     
+JAMES             950 BLAKE            2850                                     
+FORD             3000 JONES            2975                                     
+
+ENAME             SAL ENAME             SAL                                     
+---------- ---------- ---------- ----------                                     
+MILLER           1300 CLARK            2450                                     
+
+12 rows selected.
+
+SQL> select e1.ename,e2.ename,e2.sal*12
+  2  from emp e1,emp e2
+  3  where job='ANALYST'
+  4  e1.mgr=e2.empno;
+e1.mgr=e2.empno
+*
+ERROR at line 4:
+ORA-00933: SQL command not properly ended 
+
+
+SQL> select e1.ename,e2.ename,e2.sal*12
+  2  from emp e1,emp e2
+  3  where e1. job='ANALYST'
+  4  e1.mgr=e2.empno;
+e1.mgr=e2.empno
+*
+ERROR at line 4:
+ORA-00933: SQL command not properly ended 
+
+
+SQL> select e1.ename,e2.ename,e2.sal*12
+  2  from emp e1,emp e2
+  3  where e1. job='ANALYST' and
+  4   e1.mgr=e2.empno;
+
+ENAME      ENAME       E2.SAL*12                                                
+---------- ---------- ----------                                                
+SCOTT      JONES           35700                                                
+FORD       JONES           35700                                                
+
+SQL> select e1.ename,e2.ename
+  2  from emp e1,emp e2
+  3  where e1.job=e2.job and
+  4  e1.empno=e2.mgr;
+
+no rows selected
+
+SQL> select e1.ename,e2.ename
+  2  from emp e1,emp e2
+  3  where e1.job=e2.job and
+  4   e1.mgr=e2.empno;
+
+no rows selected
+
+SQL> spool 'C:\Users\ELCOT\Desktop\SQL practice\GROUP BY.txt'

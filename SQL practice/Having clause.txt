@@ -1,0 +1,50 @@
+SQL> select count(*),deptno
+  2  from emp
+  3  where dept!=20
+  4  group by deptno
+  5  having count(*)>3;
+where dept!=20
+      *
+ERROR at line 3:
+ORA-00904: "DEPT": invalid identifier 
+
+
+SQL> 
+SQL> select count(*),deptno
+  2  from emp
+  3  where deptno!=20
+  4  group by deptno
+  5  having count(*)>3;
+
+  COUNT(*)     DEPTNO                                                           
+---------- ----------                                                           
+         6         30                                                           
+
+SQL> select sum(sal),job
+  2  from emp
+  3  group by job
+  4  having sum(sal)>5000;
+
+  SUM(SAL) JOB                                                                  
+---------- ---------                                                            
+      5600 SALESMAN                                                             
+      8275 MANAGER                                                              
+      8000 ANALYST                                                              
+
+SQL> select count(*),ename
+  2  from emp
+  3  group by ename
+  4  having count(*)>1;
+
+no rows selected
+
+SQL> select count(*),job
+  2  from emp
+  3  group by job
+  4  having count(*)=2;
+
+  COUNT(*) JOB                                                                  
+---------- ---------                                                            
+         2 ANALYST                                                              
+
+SQL> spool off;

@@ -1,0 +1,84 @@
+SQL> select max(sal),sal
+  2  from emp
+  3  group by sal;
+
+  MAX(SAL)        SAL                                                           
+---------- ----------                                                           
+      2450       2450                                                           
+      5000       5000                                                           
+      1300       1300                                                           
+      1250       1250                                                           
+      2850       2850                                                           
+      2975       2975                                                           
+      1100       1100                                                           
+      3000       3000                                                           
+       800        800                                                           
+      1600       1600                                                           
+      1500       1500                                                           
+
+  MAX(SAL)        SAL                                                           
+---------- ----------                                                           
+       950        950                                                           
+
+12 rows selected.
+
+SQL> 
+SQL> select max(sal),deptno
+  2  from emp
+  3  group by deptno;
+
+  MAX(SAL)     DEPTNO                                                           
+---------- ----------                                                           
+      2850         30                                                           
+      5000         20                                                           
+      5000         10                                                           
+
+SQL> select min(sal),job
+  2  from emp
+  3  where job!='PRESIDENT'
+  4  group by job;
+
+  MIN(SAL) JOB                                                                  
+---------- ---------                                                            
+      1100 TESTING                                                              
+       800 CLERK                                                                
+      1250 SALESMAN                                                             
+      2450 MANAGER                                                              
+      3000 ANALYST                                                              
+
+SQL> select avg(sal),job
+  2  from emp
+  3  where job!='MANAGER'
+  4  group by job;
+
+  AVG(SAL) JOB                                                                  
+---------- ---------                                                            
+      1100 TESTING                                                              
+1016.66667 CLERK                                                                
+      1400 SALESMAN                                                             
+      5000 PRESIDENT                                                            
+      4000 ANALYST                                                              
+
+SQL> select avg(sal),job
+  2  from emp
+  3  where not job in('ANALYST','MANAGER')
+  4  group by job;
+
+  AVG(SAL) JOB                                                                  
+---------- ---------                                                            
+      1100 TESTING                                                              
+1016.66667 CLERK                                                                
+      1400 SALESMAN                                                             
+      5000 PRESIDENT                                                            
+
+SQL> select avg(sal),job
+  2  from emp
+  3  where job in!=('ANALYST','MANAGER')
+  4  group by job;
+where job in!=('ANALYST','MANAGER')
+            *
+ERROR at line 3:
+ORA-00936: missing expression 
+
+
+SQL> spool off;

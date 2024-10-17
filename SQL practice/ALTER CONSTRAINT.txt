@@ -1,0 +1,370 @@
+SQL> select * from tab;
+
+TNAME                          TABTYPE  CLUSTERID                               
+------------------------------ ------- ----------                               
+DEPT                           TABLE                                            
+EMP                            TABLE                                            
+BONUS                          TABLE                                            
+SALGRADE                       TABLE                                            
+COURSE                         TABLE                                            
+STUDENT                        TABLE                                            
+COUR                           TABLE                                            
+STU                            TABLE                                            
+HOSPITAL                       TABLE                                            
+
+9 rows selected.
+
+SQL> desc cour;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ CID                                                NUMBER(5)
+ CNAME                                              VARCHAR2(10)
+ FEES                                               NUMBER(5)
+
+SQL> desc stu;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ SID                                                NUMBER(5)
+ SNAME                                              VARCHAR2(10)
+ AGE                                                NUMBER(2)
+ CID                                                NUMBER(5)
+
+SQL> alter table cour add constraint pri_key primary key(CID);
+alter table cour add constraint pri_key primary key(CID)
+                                        *
+ERROR at line 1:
+ORA-02261: such unique or primary key already exists in the table 
+
+
+SQL>  alter table cour add constraint p_k PRIMARY KEY(CID);
+ alter table cour add constraint p_k PRIMARY KEY(CID)
+                                     *
+ERROR at line 1:
+ORA-02261: such unique or primary key already exists in the table 
+
+
+SQL> cl scr
+SQL> drop cour;
+drop cour
+     *
+ERROR at line 1:
+ORA-00950: invalid DROP option 
+
+
+SQL> cl scr
+SQL> drop table cour;
+drop table cour
+           *
+ERROR at line 1:
+ORA-02449: unique/primary keys in table referenced by foreign keys 
+
+
+SQL> drop table stu;
+
+Table dropped.
+
+SQL> drop table cour;
+
+Table dropped.
+
+SQL> purge recyclebin;
+
+Recyclebin purged.
+
+SQL> cl scr
+SQL> select * from tab;
+
+TNAME                          TABTYPE  CLUSTERID                               
+------------------------------ ------- ----------                               
+DEPT                           TABLE                                            
+EMP                            TABLE                                            
+BONUS                          TABLE                                            
+SALGRADE                       TABLE                                            
+COURSE                         TABLE                                            
+STUDENT                        TABLE                                            
+HOSPITAL                       TABLE                                            
+
+7 rows selected.
+
+SQL> desc course;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ CID                                       NOT NULL NUMBER(5)
+ CNAME                                     NOT NULL VARCHAR2(10)
+ AMOUNT                                             NUMBER(5)
+ TNAME                                              VARCHAR2(10)
+
+SQL> desc student;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ SID                                       NOT NULL NUMBER(7)
+ SNAME                                     NOT NULL VARCHAR2(10)
+ AGE                                                NUMBER(2)
+ GENDER                                             VARCHAR2(5)
+ CNAME                                     NOT NULL VARCHAR2(10)
+ CNO                                                NUMBER(10)
+ CID                                                NUMBER(5)
+
+SQL> create table cour(CID NUMBER(5),CNAME VARCHAR(10),FEES NUMBER(5) CHECK(FEES>20000));
+
+Table created.
+
+SQL> create table stu(SID NUMBER(5),SNAME VARCHAR(10),CNO NUMBER(10),GENDER VARCHAR(5) DEFAULT('MALE'));
+
+Table created.
+
+SQL> DROP TABLE STU;
+
+Table dropped.
+
+SQL> PURGE RECYCLEBIN
+  2  
+SQL>  PURGE RECYCLEBIN;
+
+Recyclebin purged.
+
+SQL>  create table stu(SID NUMBER(5),SNAME VARCHAR(10),CNO NUMBER(10),GENDER VARCHAR(5) DEFAULT('MALE'),CID REFERENCES COUR(CID);
+ create table stu(SID NUMBER(5),SNAME VARCHAR(10),CNO NUMBER(10),GENDER VARCHAR(5) DEFAULT('MALE'),CID REFERENCES COUR(CID)
+                                                                                                                          *
+ERROR at line 1:
+ORA-00907: missing right parenthesis 
+
+
+SQL>  create table stu(SID NUMBER(5),SNAME VARCHAR(10),CNO NUMBER(10),GENDER VARCHAR(5) DEFAULT('MALE'),CID REFERENCES COUR(CID));
+ create table stu(SID NUMBER(5),SNAME VARCHAR(10),CNO NUMBER(10),GENDER VARCHAR(5) DEFAULT('MALE'),CID REFERENCES COUR(CID))
+                                                                                                                       *
+ERROR at line 1:
+ORA-02270: no matching unique or primary key for this column-list 
+
+
+SQL> alter table cour add constraint prik primary key(CID);
+
+Table altered.
+
+SQL> create table stu(SID NUMBER(5),SNAME VARCHAR(10),CNO NUMBER(10),GENDER VARCHAR(5) DEFAULT('MALe
+  2  
+SQL> create table stu(SID NUMBER(5),SNAME VARCHAR(10),CNO NUMBER(10),GENDER VARCHAR(5) DEFAULT('MALE'),CID REFERENCES COUR(CID));
+
+Table created.
+
+SQL> alter table cour add constraint frik foreign key(CID);
+alter table cour add constraint frik foreign key(CID)
+                                                    *
+ERROR at line 1:
+ORA-00905: missing keyword 
+
+
+SQL> cl scr
+SQL> desc cour;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ CID                                       NOT NULL NUMBER(5)
+ CNAME                                              VARCHAR2(10)
+ FEES                                               NUMBER(5)
+
+SQL> desc stu;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ SID                                                NUMBER(5)
+ SNAME                                              VARCHAR2(10)
+ CNO                                                NUMBER(10)
+ GENDER                                             VARCHAR2(5)
+ CID                                                NUMBER(5)
+
+SQL> alter table stu add constraint frik foreign key(CID);
+alter table stu add constraint frik foreign key(CID)
+                                                   *
+ERROR at line 1:
+ORA-00905: missing keyword 
+
+
+SQL> alter table cour add constraint che check(FEES>20);
+
+Table altered.
+
+SQL> alter table stu add constraint pr primary key(SID);
+
+Table altered.
+
+SQL> alter table cour add constraint nu not null;
+alter table cour add constraint nu not null
+                                   *
+ERROR at line 1:
+ORA-00904: : invalid identifier 
+
+
+SQL>  alter table cour add constraint nu not null(CID);
+ alter table cour add constraint nu not null(CID)
+                                    *
+ERROR at line 1:
+ORA-00904: : invalid identifier 
+
+
+SQL> alter table cour add constraint nu not null(CNAME);
+alter table cour add constraint nu not null(CNAME)
+                                   *
+ERROR at line 1:
+ORA-00904: : invalid identifier 
+
+
+SQL> alter table cour add constraint un unique(CID);
+alter table cour add constraint un unique(CID)
+                                   *
+ERROR at line 1:
+ORA-02261: such unique or primary key already exists in the table 
+
+
+SQL> alter table cour add constraint un unique(CNAME);
+
+Table altered.
+
+SQL> alter table cour add constraint fr foreign key(CID);
+alter table cour add constraint fr foreign key(CID)
+                                                  *
+ERROR at line 1:
+ORA-00905: missing keyword 
+
+
+SQL>  alter table cour add constraint fr foreign key references stu (CID);
+ alter table cour add constraint fr foreign key references stu (CID)
+                                                *
+ERROR at line 1:
+ORA-00906: missing left parenthesis 
+
+
+SQL>  alter table cour add constraint fork foreign key(CID);
+ alter table cour add constraint fork foreign key(CID)
+                                                     *
+ERROR at line 1:
+ORA-00905: missing keyword 
+
+
+SQL> alter table stu add constraint fork foreign key cour(CID);
+alter table stu add constraint fork foreign key cour(CID)
+                                                *
+ERROR at line 1:
+ORA-00906: missing left parenthesis 
+
+
+SQL>  table stu add constraint fork foreign key(CID);
+SP2-0734: unknown command beginning "table stu ..." - rest of line ignored.
+SQL> alter table stu add constraint fork foreign key(CID);
+alter table stu add constraint fork foreign key(CID)
+                                                   *
+ERROR at line 1:
+ORA-00905: missing keyword 
+
+
+SQL> alter table stu add constraint cid references cour(CID);
+alter table stu add constraint cid references cour(CID)
+                                                   *
+ERROR at line 1:
+ORA-01735: invalid ALTER TABLE option 
+
+
+SQL> alter table add constraint frk foreign key cid references cour(CID);
+alter table add constraint frk foreign key cid references cour(CID)
+            *
+ERROR at line 1:
+ORA-00903: invalid table name 
+
+
+SQL> alter table couradd constraint frk foreign key cid references cour(CID);
+alter table couradd constraint frk foreign key cid references cour(CID)
+                    *
+ERROR at line 1:
+ORA-01735: invalid ALTER TABLE option 
+
+
+SQL> 
+SQL> alter table cour modify constraint df default 'MALE'(CNAME);
+alter table cour modify constraint df default 'MALE'(CNAME)
+                                      *
+ERROR at line 1:
+ORA-00933: SQL command not properly ended 
+
+
+SQL> alter table cour modify CNAME VARCHAR(20) DEFAULT(40);
+
+Table altered.
+
+SQL> ALTER TABLE COUR ADD CONSTRAINT FE UNIQUE(FEES);
+
+Table altered.
+
+SQL> DESC COUR;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ CID                                       NOT NULL NUMBER(5)
+ CNAME                                              VARCHAR2(20)
+ FEES                                               NUMBER(5)
+
+SQL> ALTER TABLE ADD CONSTRAINT FEE PRIMARY KEY(FEES);
+ALTER TABLE ADD CONSTRAINT FEE PRIMARY KEY(FEES)
+            *
+ERROR at line 1:
+ORA-00903: invalid table name 
+
+
+SQL>  ALTER TABLE COUR ADD CONSTRAINT FEE PRIMARY KEY(FEES);
+ ALTER TABLE COUR ADD CONSTRAINT FEE PRIMARY KEY(FEES)
+                                     *
+ERROR at line 1:
+ORA-02260: table can have only one primary key 
+
+
+SQL> alter table cour modify FEES NUMBER(5) NOTNULL;
+alter table cour modify FEES NUMBER(5) NOTNULL
+                                       *
+ERROR at line 1:
+ORA-01735: invalid ALTER TABLE option 
+
+
+SQL> ALTER TABLE STU CONSTRAINT SNAME VARCHAR(20) NOTNULL;
+ALTER TABLE STU CONSTRAINT SNAME VARCHAR(20) NOTNULL
+                *
+ERROR at line 1:
+ORA-01735: invalid ALTER TABLE option 
+
+
+SQL> ALTER TABLE STU MODIFY  SNAME VARCHAR(20) NOTNULL;
+ALTER TABLE STU MODIFY  SNAME VARCHAR(20) NOTNULL
+                                          *
+ERROR at line 1:
+ORA-01735: invalid ALTER TABLE option 
+
+
+SQL> ALTER TABLE STU MODIFY  SNAME VARCHAR(10) NOT NULL;
+
+Table altered.
+
+SQL> DESC STU;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ SID                                       NOT NULL NUMBER(5)
+ SNAME                                     NOT NULL VARCHAR2(10)
+ CNO                                                NUMBER(10)
+ GENDER                                             VARCHAR2(5)
+ CID                                                NUMBER(5)
+
+SQL> ALTER TABLE STU MODIFY CID NUMBER(5) NOT NULL;
+
+Table altered.
+
+SQL> DESC STU;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ SID                                       NOT NULL NUMBER(5)
+ SNAME                                     NOT NULL VARCHAR2(10)
+ CNO                                                NUMBER(10)
+ GENDER                                             VARCHAR2(5)
+ CID                                       NOT NULL NUMBER(5)
+
+SQL> ALTER TABLE COUR ADD CONSTRAINT FRK FOREIGN KEY(CID);
+ALTER TABLE COUR ADD CONSTRAINT FRK FOREIGN KEY(CID)
+                                                   *
+ERROR at line 1:
+ORA-00905: missing keyword 
+
+
+SQL> SPOOL OFF;

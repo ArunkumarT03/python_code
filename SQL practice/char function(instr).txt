@@ -1,0 +1,26 @@
+SQL> select instr('developers','e',2,3) from dual;
+
+INSTR('DEVELOPERS','E',2,3)                                                     
+---------------------------                                                     
+                          8                                                     
+
+SQL> select instr('developers','e',3,3) from  dual;
+
+INSTR('DEVELOPERS','E',3,3)                                                     
+---------------------------                                                     
+                          0                                                     
+
+SQL> select intr('developers','l',1,1) from dual;
+select intr('developers','l',1,1) from dual
+       *
+ERROR at line 1:
+ORA-00904: "INTR": invalid identifier 
+
+
+SQL>  select instr('developers','l',1,1) from dual;
+
+INSTR('DEVELOPERS','L',1,1)                                                     
+---------------------------                                                     
+                          5                                                     
+
+SQL> spool off;
