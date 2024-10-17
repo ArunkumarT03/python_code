@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <title>Document</title>
+    <script>
+      /*  let student={
+            studentid:101,
+            firstname:'sai',
+            lastname:'kumar',
+            birthyear:2003,
+            calcage:function()
+            {
+               return 2024-this.birthyear
+            }
+          
+        }
+        console.log(student)
+        console.log(student.calcage())*/
+      
+      function outer(){
+        let a=10
+        function inner(){
+            console.log(this)
+        }
+        inner()
+
+      }
+      outer()
+
+      
+    </script>
+</head>
+<body>
+    <h2>javascript</h2>
+</body>
+</html>

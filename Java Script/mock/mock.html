@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+   
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    function prime(num){
+      if(num<=1)
+       return false
+      for(i=2;i<=Math.sqrt(num);i++){
+        if(num%1==0)
+         return false
+      }
+      return true
+    }
+    function range(){
+        for(i=1;i<=50;i++){
+            if(prime(i)==i){
+                console.log(i)
+                
+            }
+        }
+    }
+    //range()
+       
+        for(let i=20;i<=50;i++)
+        {
+            for(let j=2;j<=Math.trunc(i/2);j++)
+            {
+                if(i%j==0)
+                {
+                    console.log('not prime'+i)
+                    break
+                }
+            }
+            console.log('prime'+i)
+        }
+
+
+
+       
+       
+    </script>
+</body>
+</html>

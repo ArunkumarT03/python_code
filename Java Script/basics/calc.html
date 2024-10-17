@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <title>calculater</title>
+    <script>
+        function main()
+        {
+            let n1=prompt('enter num:')
+            let n2=prompt('enter num:')
+            output=calc(n1,n2,mul)
+            console.log(output)
+        }
+        function calc(a,b,calctype)
+        {
+            let res=0
+            res=calctype(a,b)
+            return res;
+
+        }
+        function sum(n1,n2)
+        {
+            let res=n1+n2;
+            return res;
+
+        }
+        function mul(n1,n2)
+        {
+            let res=n1*n2;
+            return res
+        }
+        main()
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0px;
+        }
+        div{
+            background-color: orange;
+            text-align: center;
+            padding: 10px;
+
+        }
+        div>h1{
+            color: black;
+
+        }
+        div>button{
+            border: none;
+            outline: none;
+            border-radius: 5px;
+            box-shadow: 0px 0px 5px white;
+            border: 5px;
+            margin-top: 15px;
+        }
+        div>button:hover{
+            background-color: aqua;
+            
+        }
+
+    </style>
+</head>
+<body>
+    <div>
+    <h1 id="display-text"> Message</h1>
+    <button onclick="diplaymsg()">click here</button>
+    <button id="hello-btn">click here</button>
+    <button id="bye-btn">click here</button>
+   </div>
+    <script>
+        let diplaytag=document.getElementById('display-text')
+        //inline Eventhandler
+        function diplaymsg(){
+               
+               diplaytag.textContent='Hii'
+               diplaytag.style.color='darkblue'
+        }
+        //using event handler properties
+        let hellobtn=document.getElementById('hello-btn')
+        hellobtn.onclick=function(){
+               diplaytag.textContent='Hello'
+               diplaytag.style.color='black'
+        }
+        // using addEventlistener method
+        let byeBtn=document.getElementById('bye-btn')
+        byeBtn.addEventListener('click',function()
+        {
+               diplaytag.textContent='Bye'
+               diplaytag.style.color='grey'
+        })
+        
+
+    </script>
+</body>
+</html>

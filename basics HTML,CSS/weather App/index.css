@@ -1,0 +1,9 @@
+.main{
+    min-height: 100vh;
+    width: 100vw;
+    background-image: linear-gradient(to right,rgba(117, 106, 106, 0.5),rgba(216, 196, 196, 0.3)),url(https://images.pexels.com/photos/207489/pexels-photo-207489.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <title>Document</title>
+    <script>
+        /*function armstrong(){
+            let res=0
+            let n=prompt()
+            let nofdigits=n.length
+            let temp=n
+            while(temp>0){
+                let rem=temp%10;
+                res+=rem**nofdigits;
+                temp=parseInt(temp/10);
+
+            }
+            if(res==n){
+                console.log(`${n}is armstrong number`)
+                return;
+            }
+            else{
+            console.log(`${n}is not a armstrong`)
+            }
+        }
+        armstrong();*/
+
+       /* function disarum(){
+            let res=0
+            let number=prompt()
+            let nofdigits=number.length
+            let temp=number
+            while(temp>0){
+                let rem=temp%10
+                res+=rem**nofdigits
+                nofdigits-=1
+                temp=parseInt(temp/10)
+            }
+            if(res==number){
+                console.log(`${number}is disarum number`)
+               
+            }
+            else{
+            console.log(`${number}is not a disarum`)
+            }
+        }
+        disarum()*/
+
+      //recursion using armst
+        /*function armstrong(num,power)
+        {
+            if(num==0)
+                return 0
+            return (num%10)**power + armstrong(Math.trunc(num/10),power)
+        }
+        let num=Number(prompt())
+        let power=String(num).length
+        if(armstrong(num,power)==num)
+        {
+            console.log(`${num}  is armstrong`)
+        }
+        else
+        console.log(`${num} is not armstrong`)*/
+        
+       /* function factorial(num){
+            if(num<=1)
+               return 1
+            return num*factorial(num-1)
+        }
+        function strong(num){
+            if(num==0)
+               return 0
+            return factorial(num%10)+strong(Math.trunc(num/10))
+        }
+        let num=Number(prompt())
+        if(strong(num)==num)
+            console.log(`${num}is strong`)
+        
+        else
+        console.log(`${num}is not strong`)*/
+
+        function strong(){
+            let num=Number(prompt())
+            let res=0
+            let dup=num
+            while (num!=0){
+                rem=num%10
+                fact=1
+                for(let i=1;i<=rem;i++){
+                fact*=i
+                }
+                res+=fact
+                Math.trunc(num/10)
+            }
+            if(res==num){
+                console.log('strong')
+            }
+            else
+            console.log('not strong')
+        }
+    
+    
+    strong()
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

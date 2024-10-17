@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    
+    <title>Document</title>
+    <script>
+        let travels_1={
+            travelsname:'essar',
+            bookid:101,
+            booking:[]
+        };
+        let tarvels_2={
+            travelsname:'A1',
+            bookid:102,
+            bookings:[]
+        };
+        let book=function(name,seatno){
+            console.log(`${name}is booked ${this.travelsname} in seatno ${seatno}`)
+            let passenger={person:`${name},${this.travelsname},${this.busid},${seaatno}`}
+            this.bookings.push(passenger);
+        };
+    book.call(travels_1,'ak',21);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

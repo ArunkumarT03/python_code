@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   
+    <title>Document</title>
+  <style>
+    body{
+        background:grey url(https://up.yimg.com/ib/th?id=OIP.QLMOHJuRdXygbBAhMORhAgHaEK&pid=Api&rs=1&c=1&qlt=95&w=183&h=102) no-repeat;
+        background-size: cover;
+    }
+
+
+    #reg-form{
+        background:linear-gradient(45deg,black,orange,black);
+        width: 200px;
+        margin: 150px auto;
+        text-align: center;
+        padding: 20px;
+        background: url(https://up.yimg.com/ib/th?id=OIP.QLMOHJuRdXygbBAhMORhAgHaEK&pid=Api&rs=1&c=1&qlt=95&w=183&h=102)no-repeat;
+        background-size:cover ;
+        border: 2px solid white;
+        outline: none;
+        border-radius: 10px;
+
+
+
+    }
+    .form-group input[type="text"],
+    .form-group input[type="email"],
+    .form-group input[type="password"],
+    .form-group textarea,
+    select
+    {
+        border: none;
+        outline: none;
+        border-bottom: 2px solid white;
+        margin-bottom: 20px;
+        background: transparent;
+        color: white;
+       
+    }
+   select{
+    width: 160px;
+   }
+   ::placeholder{
+    color: white;
+   }
+   input[type="submit"]{
+    background: linear-gradient(360deg,brown,black,brown) ;
+    color: white;
+    border:none;
+    outline: none;
+    width:80px;
+    padding: 5px 10px;
+    border-radius: 10px;
+   }
+   input[type="submit"]:hover{
+    box-shadow: 0px 0px 5px white;
+    cursor: pointer;
+   }
+   .fa-solid{
+      color: white;
+      font-size: 70px;
+      position: relative;
+      top: -40px;
+      background-color: black;
+      border-radius: 100%;
+      border:10px solid black;
+   }
+
+
+  </style>
+  <link rel="stylesheet" href="../navigation/fontawesome-free-6.6.0-web/css/all.css">
+</head>
+<body>
+    <div id="reg-form">
+        <div>
+            <i class="fa-solid fa-circle-user"></i>
+        </div>
+        <form class="disply-form">
+            <div class="form-group">
+                <input type="text" id="name" placeholder="enter username">
+            </div>
+            <div class="form-group">
+                <input type="email" placeholder="enter email">
+            </div>
+            <div class="form-group">
+                <input type="password" placeholder="enter password">
+            </div>
+            <div class="form-group">
+                <input type="password" placeholder="confirm password">
+            </div>
+            <div class="form-group">
+                <textarea></textarea>
+            </div>
+            <div>
+                <select >
+                    <option >..select city..</option>
+                    <option >kkdi</option>
+                    <option >cbe</option>
+                    <option >Bglr</option>
+                </select>
+            </div>
+        <div>
+            <input type="submit" >
+        </div>
+    </form>
+</div>
+</body>
+</html>

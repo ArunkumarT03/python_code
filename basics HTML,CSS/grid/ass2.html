@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <title>Document</title>
+    <style>
+        .container{
+    
+          border: 2px solid black;
+          height: 500px;
+          display: grid;
+          grid-template-columns:repeat(4,auto);
+          grid-template-rows:auto;
+          grid-column-gap:20px;
+          grid-row-gap:20px;
+          
+            
+        
+        }
+        .child{
+            background-color: red;
+
+
+        }
+        .one{
+          grid-column:1/2;
+          grid-row: 1/3;
+
+        }
+        .five{
+            grid-column: 2/4;
+            grid-row: 2/3;
+        }
+        .six{
+            grid-column: 4/5;
+            grid-row: 2/4;
+        }
+        .seven{
+            grid-column: 1/3;
+            grid-row:3/4 ;
+        }
+       .ten{
+        grid-column: 2/4;
+        grid-row:4/5;
+       }
+
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="child one ">1
+        
+    </div>
+    <div class="child two">2
+        <img src="../basics HTML,CSS/ajith.jpg" alt="">
+    </div>
+    <div class="child three">3</div>
+    <div class="child four">4</div>
+    <div class="child five">5</div>
+    <div class="child six">6</div>
+    <div class="child seven">7</div>
+    <div class="child eight">8</div>
+    <div class="child nine">9</div>
+    <div class="child ten">10</div>
+    <div class="child eleven">11</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <title>Document</title>
+    <script>
+      /* function fibnoacci(){
+        let n=Number(prompt('enter a number'))
+        let a=0
+        let b=1
+        let c=0
+        console.log(a)
+        console.log(b)
+        
+        for(let i=1;i<=n-2;i++)
+          {
+            c=a+b
+            console.log(c)
+            a=b
+            b=c
+          }
+        
+        
+       }
+       fibnoacci()*/
+
+       /*function fibinorange(){
+        let n1=Number(prompt())
+        let n2=Number(prompt())
+        let a=0
+        let b=1
+        let c=0
+        for(let i=1;i<=n2;i++){
+          c=a+b;
+          if(c>=n1&c<=n2)
+          {
+            console.log(c)
+          }
+          a=b
+          b=c
+        }
+       }
+       fibinorange()*/
+       /*function fibi(){
+        let n=Number(prompt())
+        let a=0
+        let b=1
+        let c=0
+        console.log(a)
+        console.log(b)
+        for(let i=1;i<=n;i++){
+          c=a+b
+          if(c<=n){
+            console.log(c)
+          }
+          a=b
+          b=c
+
+        }
+       }
+       fibi()*/
+     
+       function checkfibo(){
+        let n=Number(prompt())
+        let a=0
+        let b=1
+        let c=0
+        for(let i=1;i<=n;i++){
+          c=a+b
+          if(n==c){
+            console.log(`${n}is fibino number`)
+            return
+
+          }
+          a=b
+          b=c
+        }
+        console.log(`${n}is not fibino`)
+       }
+       //checkfibo()
+
+        let n=Number(prompt());
+        let a=0;
+        let b=1;
+        let c=0;
+        for(let i=0;i<n;i++)
+        {
+          c=a+b;
+          //console.log(a);
+          a=b;
+          b=c;
+        }
+      
+      for(let i=1;i<=n;i++)
+      {
+       let res='';
+       for(let j=1;j<=i;j++)
+       {
+        res+=a+' ';
+       }
+       console.log(res)
+      }
+    </script>
+</head>
+<body>
+    <h1>fibinorange</h1>
+</body>
+</html>
